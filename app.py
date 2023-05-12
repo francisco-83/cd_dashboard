@@ -91,7 +91,7 @@ st.markdown('---')
 column_one, column_two = st.columns(2)
 
 operator = pd.value_counts(df_selection['Operator'])
-'''
+
 with column_one:
     fig_operator = px.bar(
         operator,
@@ -102,7 +102,6 @@ with column_one:
         template="plotly"
     )
     st.plotly_chart(fig_operator)
-'''
 
 topics = pd.value_counts(df_selection["Topic"])
 
