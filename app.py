@@ -116,7 +116,6 @@ with column_two:
     )
     st.plotly_chart(fig_topics)
 
-print(df.info())
 # Num Calls by topic
 
 
