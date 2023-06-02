@@ -95,7 +95,7 @@ operator = pd.value_counts(df_selection['Operator'])
 with column_one:
     fig_operator = px.bar(
         operator,
-        x="count",
+        x=operator,
         y=operator.index,
         orientation="h",
         title="<b>Num. of Calls By Operator</b>",
@@ -108,7 +108,7 @@ topics = pd.value_counts(df_selection["Topic"])
 with column_two:
     fig_topics = px.bar(
         topics,
-        x="count",
+        x=topics,
         y=topics.index,
         orientation="h",
         title="<b>Num. of Calls By Topic</b>",
