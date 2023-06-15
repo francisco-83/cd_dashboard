@@ -9,53 +9,53 @@ st.set_page_config(
 
 )
 
-@st.cache_data
-def get_data_from_excel():
+#@st.cache_data
+#//def get_data_from_excel():
 
-    df = pd.read_excel(
-        io ="call_log.xlsx",
+df = pd.read_excel(
+        io ="call_log_01.xlsx",
         engine='openpyxl',
         skiprows='1',
         usecols='A:L',
-        nrows=260,
+        nrows=2434,
     )
-    return df
-df = get_data_from_excel()
+    #return df
+#df = get_data_from_excel()
 
 #st.dataframe(df)
 
-# ---- sidebar 
+# ---- sidebar
 
 st.sidebar.header("Please filter here")
 
 date = st.sidebar.selectbox(
-    "Select the Date:", 
-    options=df["Date"].unique(),
+    "Select the Date:",
+    options=df["Month"].unique(),
 )
 
 topic = st.sidebar.multiselect(
-    "Select the Topic:", 
+    "Select the Topic:",
     options=df["Topic"].unique(),
     default=df["Topic"].unique()
 
 )
 
 operator = st.sidebar.multiselect(
-    "Select the Operator:", 
+    "Select the Operator:",
     options=df["Operator"].unique(),
     default=df["Operator"].unique()
 
 )
 
 resolved = st.sidebar.multiselect(
-    "Select if Resolved:", 
+    "Select if Resolved:",
     options=df["Resolved"].unique(),
     default=df["Resolved"].unique()
 
 )
 
 df_selection = df.query(
-    "Topic == @topic & Operator == @operator & Resolved == @resolved"
+    "Topic == @topic & Operator == @operator & Resolved == @resolved & Month == @date"
 )
 
 # Title
@@ -66,7 +66,7 @@ st.markdown('##')
 
 left_column, center_column, right_column  = st.columns(3)
 
-# Total Columns 
+# Total Columns
 total_calls = len(df_selection)
 with left_column:
     st.subheader(":telephone_receiver: Total calls")
@@ -78,7 +78,7 @@ with center_column:
     st.subheader("✅ Resolved Calls")
     st.subheader(resolved[0])
 
-# Unresolved calls    
+# Unresolved calls
 unresolved = pd.value_counts(df_selection['Resolved'])
 with right_column:
     st.subheader("❌ Unresolved Calls")
@@ -115,7 +115,3 @@ with column_two:
         template="plotly"
     )
     st.plotly_chart(fig_topics)
-
-# Num Calls by topic
-
-
