@@ -9,18 +9,17 @@ st.set_page_config(
 
 )
 
-#@st.cache_data
-#//def get_data_from_excel():
-
-df = pd.read_excel(
+@st.cache_data
+def get_data_from_excel():
+    df = pd.read_excel(
         io ="call_log_01.xlsx",
         engine='openpyxl',
         skiprows='1',
         usecols='A:L',
         nrows=2434,
     )
-    #return df
-#df = get_data_from_excel()
+    return df
+df = get_data_from_excel()
 
 #st.dataframe(df)
 
