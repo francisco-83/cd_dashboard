@@ -94,6 +94,8 @@ with column_one:
         x=operator,
         y=operator.index,
         orientation="h",
+        width=500, 
+        height=400,
         title="<b>Num. of Calls By Operator</b>",
         template="plotly"
     )
@@ -106,6 +108,8 @@ with column_two:
         topics,
         x=topics,
         y=topics.index,
+        width=600, 
+        height=400,
         orientation="h",
         title="<b>Num. of Calls By Topic</b>",
         template="plotly"
