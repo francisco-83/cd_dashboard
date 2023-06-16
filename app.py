@@ -21,15 +21,12 @@ def get_data_from_excel():
     return df
 df = get_data_from_excel()
 
-#st.dataframe(df)
-
-# ---- sidebar
-
 st.sidebar.header("Please filter here")
 
-date = st.sidebar.selectbox(
+date = st.sidebar.multiselect(
     "Select the Date:",
     options=df["Month"].unique(),
+    default=df["Month"].unique(),
 )
 
 topic = st.sidebar.multiselect(
