@@ -55,7 +55,7 @@ df_selection = df.query(
 )
 
 # Title
-st.title(":bar_chart: PYB Customer Support Dashboard")
+st.title(":bar_chart: Customer Support Dashboard")
 st.markdown('##')
 
 #Columns
